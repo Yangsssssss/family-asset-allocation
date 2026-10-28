@@ -1,0 +1,55 @@
+# SkillHub / WorkBuddy 开放平台发布元数据
+# 上传 zip 到网页端市场时，对照此文件填表即可。
+# slug 必填且须为小写连字符格式（hyphen-case）；author 请改为你的开发者名 / 团队名。
+
+name: 家庭资产配置（IPS 投资政策书）
+slug: family-asset-allocation
+version: 1.1.0
+display_name: 家庭资产配置（IPS 投资政策书）
+display_name_en: Family Asset Allocation (IPS)
+author: "yangsssssss"
+category: 金融投资 · 家庭理财
+description: >-
+  把家庭可投资金按用途分桶，产出带比例上下限、再平衡触发条件与目标达成概率的 IPS 投资政策书。
+  七模块：家庭财务体检→风险画像→目标与时间分桶→战略配置SAA→选品映射→再平衡规则→保障缺口。
+  缺失信息用缺省假设填充并在首页列出，不反复追问。纯 Python 标准库实现，零依赖。
+description_zh: >-
+  把家庭可投资金按用途分桶，产出带比例上下限、再平衡触发条件与目标达成概率的 IPS 投资政策书。
+  七模块：家庭财务体检→风险画像→目标与时间分桶→战略配置SAA→选品映射→再平衡规则→保障缺口。
+  含蒙特卡洛达成率测算与保险缺口测算；比例上限之间互相牵制，会先做可行性校验再给方案
+  （权益/外币/本币三条约束推导），并给出币种错配敏感性与跨境资产建仓阶梯。
+  只给工具类别与筛选标准，不给具体标的推荐。
+description_en: >-
+  Builds a family Investment Policy Statement (IPS): buckets investable assets by purpose rather than
+  by expected return, then produces target weights with bands, rebalancing triggers, and Monte-Carlo
+  goal-attainment probability. Covers balance-sheet health check, risk profiling, time bucketing,
+  strategic asset allocation, instrument mapping, rebalancing rules, and insurance gap analysis.
+trigger_words:
+  - 家庭资产配置
+  - 资产配置方案
+  - 这几百万怎么分
+  - 家庭财务体检
+  - IPS 投资政策书
+  - 要不要再平衡
+  - 养老要准备多少
+  - 保险保额够不够
+  - 教育金怎么攒
+  - 钱按用途分桶
+  - 美股日经怎么配
+  - 外币敞口多少合适
+  - A股配置多少合适
+tags:
+  - 资产配置
+  - 家庭财务
+  - IPS
+  - 投资政策书
+  - 再平衡
+  - 保险缺口
+  - 养老规划
+  - 蒙特卡洛
+license: MIT
+requirements: 无（仅使用 Python 3 标准库，无需 pip 安装任何包）
+disclaimer: >-
+  本技能为家庭财务规划框架与决策流程工具，输出的所有收益率、波动率、相关性均为假设值而非预测，
+  蒙特卡洛结果为假设的函数，不构成任何投资建议、证券推荐或买卖依据。不承诺收益，不推荐具体标的。
+  使用者应结合自身实际情况判断，必要时咨询持牌专业机构。

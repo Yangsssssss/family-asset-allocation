@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPS 投资政策书 · 模板</title>
+<!--
+  版式模板：用途是给出结构、配色与组件样式，不是让执行者照抄内容。
+  使用方式：复制本文件，按注释顺序替换各区块内容。
+  - 区块顺序固定，不可调整（假设清单必须置顶）
+  - 浅色主题：浅底深字；涨用红(#b03a2e)、跌用绿(#2e6b4f)，遵中国习惯
+  - 金额单位统一「万元」
+  - 所有收益率为假设值，须标注
+-->
+<style>
+  :root{
+    --ink:#1a2332; --ink-2:#465063; --ink-3:#6b7688;
+    --line:#dfe3ea; --line-2:#eef1f5;
+    --bg:#f7f8fa; --card:#ffffff;
+    --red:#b03a2e; --green:#2e6b4f; --amber:#a9751b; --blue:#2b5578;
+    --red-bg:#fdf1ef; --green-bg:#eef6f1; --amber-bg:#fdf7ea; --blue-bg:#eff4f9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.7;
+    font-size:14px; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:40px 28px 80px}
+
+  /* ===== 页头 ===== */
+  header.head{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:32px}
+  .kicker{font-size:11px;letter-spacing:.18em;color:var(--ink-3);text-transform:uppercase;margin-bottom:10px}
+  h1{font-size:29px;font-weight:700;letter-spacing:-.5px;line-height:1.3}
+  .sub{color:var(--ink-2);margin-top:8px;font-size:13.5px}
+  .meta{display:flex;gap:26px;margin-top:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3)}
+  .meta b{color:var(--ink);font-weight:600}
+
+  /* ===== 区块 ===== */
+  section{margin-bottom:38px}
+  h2{font-size:17px;font-weight:700;margin-bottom:14px;display:flex;align-items:baseline;gap:10px}
+  h2 .n{font-size:11px;color:#fff;background:var(--ink);padding:2px 7px;border-radius:3px;font-weight:600;letter-spacing:.05em}
+  h3{font-size:14px;font-weight:600;margin:20px 0 10px;color:var(--ink)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px 22px}
+
+  /* ===== 假设清单（必须置顶，视觉上要显眼）===== */
+  .assume{background:var(--amber-bg);border:1px solid #f0dcb4;border-left:4px solid var(--amber);border-radius:6px;padding:18px 22px}
+  .assume h2{font-size:15px;margin-bottom:4px}
+  .assume .hint{font-size:12.5px;color:#7a5a12;margin-bottom:12px}
+  .assume table{background:transparent}
+  .assume th{background:transparent;border-bottom:1px solid #e8d5ab}
+  .assume td{border-bottom:1px solid #f2e6cd}
+
+  /* ===== 表格 ===== */
+  table{width:100%;border-collapse:collapse;font-size:13px;background:var(--card)}
+  th{text-align:left;font-weight:600;font-size:12px;color:var(--ink-2);letter-spacing:.03em;
+     padding:9px 10px;background:var(--line-2);border-bottom:1px solid var(--line)}
+  td{padding:9px 10px;border-bottom:1px solid var(--line-2);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .total td{font-weight:700;background:var(--line-2)}
+
+  /* ===== 徽章 ===== */
+  .tag{display:inline-block;padding:1px 7px;border-radius:3px;font-size:11.5px;font-weight:600;line-height:1.6}
+  .t-red{background:var(--red-bg);color:var(--red)}
+  .t-green{background:var(--green-bg);color:var(--green)}
+  .t-amber{background:var(--amber-bg);color:var(--amber)}
+  .t-blue{background:var(--blue-bg);color:var(--blue)}
+  .up{color:var(--red)}   /* 涨/正 = 红 */
+  .down{color:var(--green)} /* 跌/负 = 绿 */
+
+  /* ===== 结论卡 ===== */
+  .findings{display:grid;gap:12px}
+  .finding{display:flex;gap:14px;padding:15px 18px;background:var(--card);border:1px solid var(--line);border-radius:6px}
+  .finding .idx{font-size:20px;font-weight:700;color:var(--ink-3);line-height:1;flex:0 0 26px}
+  .finding p{font-size:13.5px}
+  .finding b{font-weight:700}
+
+  /* ===== 指标格 ===== */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
+  .kpi .lbl{font-size:11.5px;color:var(--ink-3);margin-bottom:6px}
+  .kpi .val{font-size:21px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+  .kpi .note{font-size:11.5px;color:var(--ink-3);margin-top:4px}
+
+  /* ===== 图表区 ===== */
+  .charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+  .chart{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+  .chart .cap{font-size:12px;color:var(--ink-2);font-weight:600;margin-bottom:10px}
+  .chart .src{font-size:11px;color:var(--ink-3);margin-top:8px}
+  @media(max-width:760px){.charts{grid-template-columns:1fr}}
+
+  /* ===== 规则条款 ===== */
+  .rules{counter-reset:r}
+  .rule{position:relative;padding:12px 0 12px 34px;border-bottom:1px dashed var(--line)}
+  .rule:last-child{border-bottom:none}
+  .rule:before{counter-increment:r;content:counter(r);
+    position:absolute;left:0;top:12px;width:22px;height:22px;border-radius:50%;
+    background:var(--ink);color:#fff;font-size:11.5px;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+
+  /* ===== 风险提示 ===== */
+  .warn{background:var(--red-bg);border:1px solid #f0cdc6;border-radius:6px;padding:18px 22px;font-size:12.8px;color:#7a2620}
+  .warn h2{font-size:15px;color:var(--red);margin-bottom:10px}
+  .warn li{margin-left:18px;margin-bottom:6px}
+
+  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-3)}
+  @media print{body{background:#fff}.wrap{padding:0}section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ① 页头 -->
+  <header class="head">
+    <div class="kicker">Investment Policy Statement</div>
+    <h1>{{家庭资产配置投资政策书}}</h1>
+    <p class="sub">{{一句话说明配置基数、用途与期限结构}}</p>
+    <div class="meta">
+      <span>编制日期 <b>{{YYYY-MM-DD}}</b></span>
+      <span>可投资产 <b>{{XXX}} 万元</b></span>
+      <span>风险档位 <b>{{N 档 / 名称}}</b></span>
+      <span>下次复盘 <b>{{YYYY-MM-DD}}</b></span>
+    </div>
+  </header>
+
+  <!-- ② 假设清单：必须置顶 -->
+  <section class="assume">
+    <h2>假设清单 · 先看这里</h2>
+    <p class="hint">下列带「缺省」标记的项，是未取得实际数据时采用的估算值。修改任何一项都会影响后续章节，改完请重跑对应模块。</p>
+    <table>
+      <thead><tr><th style="width:22%">项目</th><th style="width:26%">本次取值</th><th style="width:14%">来源</th><th>缺失时的缺省 / 影响</th></tr></thead>
+      <tbody>
+        <tr><td>月税后收入</td><td class="num">{{X}} 万</td><td>{{实测/缺省}}</td><td>{{影响 M1 储蓄率、M2 收入稳定性}}</td></tr>
+        <tr><td>月刚性支出</td><td class="num">{{X}} 万</td><td>{{实测/缺省}}</td><td>{{决定应急金规模与流动性比率}}</td></tr>
+        <tr><td>负债</td><td>{{无 / 余额}} </td><td>{{实测/缺省}}</td><td>{{若有房贷，M1 负债率与 M7 定寿保额需重算}}</td></tr>
+        <tr><td>家庭成员</td><td>{{}}</td><td>{{}}</td><td>{{影响期限分层与保额}}</td></tr>
+        <tr><td>已有保险</td><td>{{}}</td><td>{{}}</td><td>{{视为仅社保，M7 缺口可能被高估}}</td></tr>
+        <tr><td>长期收益假设</td><td>{{见 M4}}</td><td>假设值</td><td>{{非预测，假设失效条件见末节}}</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ③ 执行摘要 -->
+  <section>
+    <h2><span class="n">摘要</span>三条结论</h2>
+    <div class="findings">
+      <div class="finding"><div class="idx">1</div><p>{{结论一：最有份量的单一事实}}</p></div>
+      <div class="finding"><div class="idx">2</div><p>{{结论二：结构性问题或约束}}</p></div>
+      <div class="finding"><div class="idx">3</div><p>{{结论三：可立即执行的动作}}</p></div>
+    </div>
+
+    <h3>配置总表</h3>
+    <table>
+      <thead><tr><th>资产类别</th><th class="num">目标比例</th><th class="num">区间下限</th><th class="num">区间上限</th><th class="num">金额（万元）</th><th>定位</th></tr></thead>
+      <tbody>
+        <tr><td>{{A股宽基}}</td><td class="num">{{}}%</td><td class="num">{{}}%</td><td class="num">{{}}%</td><td class="num">{{}}</td><td>{{核心}}</td></tr>
+        <tr class="total"><td>合计</td><td class="num">100%</td><td class="num">—</td><td class="num">—</td><td class="num">{{}}</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ④ M1 财务体检 -->
+  <section>
+    <h2><span class="n">M1</span>家庭财务体检</h2>
+    <div class="grid">
+      <div class="kpi"><div class="lbl">负债率</div><div class="val">{{}}%</div><div class="note">{{阈值说明}}</div></div>
+      <div class="kpi"><div class="lbl">月供收入比</div><div class="val">{{}}%</div><div class="note">{{}}</div></div>
+      <div class="kpi"><div class="lbl">储蓄率</div><div class="val">{{}}%</div><div class="note">{{}}</div></div>
+      <div class="kpi"><div class="lbl">流动性比率</div><div class="val">{{}} 月</div><div class="note">{{}}</div></div>
+      <div class="kpi"><div class="lbl">可投资产倍数</div><div class="val">{{}} 倍</div><div class="note">{{}}</div></div>
+    </div>
+  </section>
+
+  <!-- ⑤ M2 风险画像 -->
+  <section>
+    <h2><span class="n">M2</span>风险画像</h2>
+    <p>{{客观能力分 {{N}} / 主观意愿分 {{N}} → 取低值 {{N}} → 第 {{N}} 档。说明为什么是这个档，以及任何下调理由。}}</p>
+  </section>
+
+  <!-- ⑥ M3 分桶 -->
+  <section>
+    <h2><span class="n">M3</span>目标与时间分桶</h2>
+    <table>
+      <thead><tr><th>桶</th><th>用途</th><th class="num">金额（万元）</th><th class="num">占比</th><th>允许工具</th></tr></thead>
+      <tbody>
+        <tr><td>① 应急金</td><td>{{}}</td><td class="num">{{}}</td><td class="num">{{}}%</td><td>{{货基/短债}}</td></tr>
+        <tr><td>② 3 年内刚性支出</td><td>{{}}</td><td class="num">{{}}</td><td class="num">{{}}%</td><td>{{存单/国债}}</td></tr>
+        <tr><td>③ 5–10 年目标</td><td>{{}}</td><td class="num">{{}}</td><td class="num">{{}}%</td><td>{{股债混合}}</td></tr>
+        <tr><td>④ 15 年以上长钱</td><td>{{}}</td><td class="num">{{}}</td><td class="num">{{}}%</td><td>{{按档位配置}}</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ⑦ M4 SAA + 达成概率（含 SVG 图） -->
+  <section>
+    <h2><span class="n">M4</span>战略配置与达成概率</h2>
+    <div class="charts">
+      <div class="chart"><div class="cap">{{图 1：配置结构环形图}}</div>
+        {{SVG：环形图，viewBox 0 0 340 220，各类资产占比}}
+        <div class="src">{{数据日期与来源}}</div>
+      </div>
+      <div class="chart"><div class="cap">{{图 2：终值分位分布}}</div>
+        {{SVG：柱状图，p5/p25/p50/p75/p95 与目标线}}
+        <div class="src">{{路径数、随机种子}}</div>
+      </div>
+    </div>
+    <h3>达成概率</h3>
+    <table>
+      <thead><tr><th>桶</th><th class="num">初始</th><th class="num">月投</th><th class="num">年限</th><th class="num">目标</th><th class="num">达成率</th><th class="num">p5 终值</th></tr></thead>
+      <tbody><tr><td>{{}}</td><td class="num">{{}}</td><td class="num">{{}}</td><td class="num">{{}}</td><td class="num">{{}}</td><td class="num">{{}}%</td><td class="num">{{}}</td></tr></tbody>
+    </table>
+    <p style="font-size:12.5px;color:var(--ink-2);margin-top:10px">{{达成率 <70% 时的处置说明；本方案的敏感性结论}}</p>
+  </section>
+
+  <!-- ⑧ M5 选品映射 -->
+  <section>
+    <h2><span class="n">M5</span>选品映射</h2>
+    <table>
+      <thead><tr><th>资产</th><th>工具形态</th><th>筛选门槛</th><th>费率上限</th></tr></thead>
+      <tbody><tr><td>{{}}</td><td>{{}}</td><td>{{规模/跟踪误差/溢价率}}</td><td>{{}}%/年</td></tr></tbody>
+    </table>
+  </section>
+
+  <!-- ⑨ M6 再平衡规则 -->
+  <section>
+    <h2><span class="n">M6</span>再平衡规则</h2>
+    <div class="card rules">
+      <div class="rule">{{触发条件：绝对偏离 >5pp 或相对偏离 >20%}}</div>
+      <div class="rule">{{执行顺序：增量资金 → 分红再投 → 卖出超配}}</div>
+      <div class="rule">{{年度复盘日与清单}}</div>
+    </div>
+  </section>
+
+  <!-- ⑩ M7 保障缺口 -->
+  <section>
+    <h2><span class="n">M7</span>保障缺口</h2>
+    <table>
+      <thead><tr><th>险种</th><th class="num">应有保额</th><th class="num">已有</th><th class="num">缺口</th><th>优先级</th></tr></thead>
+      <tbody><tr><td>{{}}</td><td class="num">{{}}</td><td class="num">{{}}</td><td class="num">{{}}</td><td>{{1–4}}</td></tr></tbody>
+    </table>
+  </section>
+
+  <!-- ⑪ 风险提示 -->
+  <section class="warn">
+    <h2>风险提示与假设失效条件</h2>
+    <ul>
+      <li>{{收益率为假设值，非预测；实际结果可能长期偏离}}</li>
+      <li>{{假设失效条件一：如 10Y 国债收益率中枢移动 >100bp}}</li>
+      <li>{{假设失效条件二：如家庭结构或收入发生结构性变化}}</li>
+      <li>本文件不构成投资建议，不含具体标的推荐。</li>
+    </ul>
+  </section>
+
+  <footer>{{编制人}} · 编制于 {{YYYY-MM-DD}} · 金额单位：人民币万元 · 复核周期：12 个月</footer>
+</div>
+</body>
+</html>

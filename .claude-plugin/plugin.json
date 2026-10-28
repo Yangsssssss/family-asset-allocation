@@ -1,0 +1,20 @@
+{
+  "name": "family-asset-allocation",
+  "version": "1.1.0",
+  "description": "Builds a family Investment Policy Statement (IPS): buckets investable assets by purpose, outputs target weights with bands, rebalancing triggers, and Monte-Carlo goal-attainment probability.",
+  "author": {
+    "name": "yangsssssss",
+    "url": "https://github.com/yangsssssss"
+  },
+  "homepage": "https://github.com/yangsssssss/family-asset-allocation",
+  "repository": "https://github.com/yangsssssss/family-asset-allocation",
+  "license": "MIT",
+  "keywords": [
+    "finance",
+    "asset-allocation",
+    "ips",
+    "financial-planning",
+    "monte-carlo",
+    "rebalancing"
+  ]
+}
